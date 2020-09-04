@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <script language="javascript">
+        function reverseString(str) {
+            return str.split("").reverse().join("");
+        }
+        function draw() {
+            var value = parseInt(document.getElementById("soDong").value);
+            if (value < 0) value = 0;
+            var content = ""
+            for (var i = 1; i <= value; i++) {
+                for (var j = 1; j <= value - i; j++) {
+                    content = content + "_";
+                }
+
+                for (var j = i; j > 0; j--) {
+                    if (j <= i / 2) {
+                        content = content + `${(i - j + 1)} `;
+
+                    } else {
+                        content = content + `${(j)} `;
+
+                    }
+                }
+
+
+
+                content = content + "<br></br>";
+            }
+
+            document.getElementById("content").innerHTML = content
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="myHeader">
+        <input id="soDong"></input>
+        <button onclick="draw()">Ve tam giac</button>
+        <div id="content">
+
+        </div>
+    </div>
+</body>
+
+</html>

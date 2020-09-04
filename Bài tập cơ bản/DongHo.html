@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <script language="javascript">
+        var milisecond = 0;
+        var second = 0;
+        var minute = 0;
+        var time;
+        function begin() {
+            time = setInterval(function () {
+                milisecond = milisecond + 1;
+                if (milisecond == 10) {
+                    milisecond = 0;
+                    second = second + 1;
+
+                }
+
+                if (second == 60) {
+                    second = 0;
+                    minute = minute + 1;
+                }
+
+                if (minute == 60) {
+                    minute = 0;
+                }
+
+                var now = (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + "." + milisecond
+                document.getElementById("time").innerHTML = now
+            }, 100)
+        }
+
+        function stop() {
+            clearInterval(time)
+        }
+
+        function reset() {
+            document.getElementById("time").innerHTML = "00:00.0"
+        }
+
+        window.onload = function () {
+            stop();
+        };
+    </script>
+</head>
+
+<body>
+    <div id="myHeader">
+        <h3 id="time">00:00.0</h3>
+        <div>
+            <button onclick="begin()">Bat dau</button>
+            <button onclick="stop()">Dung lai</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
